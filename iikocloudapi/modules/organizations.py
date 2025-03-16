@@ -133,6 +133,7 @@ class Organizations:
         return_additional_info: bool = False,
         include_disabled: bool = False,
         return_external_data: list[str] | None = None,
+        timeout: str | int | None = None,
     ) -> OrganizationsResponse:
         response = await self._client.request(
             "/api/1/organizations",
@@ -142,6 +143,7 @@ class Organizations:
                 "includeDisabled": include_disabled,
                 "returnExternalData": return_external_data,
             },
+            timeout=timeout,
         )
         return OrganizationsResponse(**orjson.loads(response.content))
 
@@ -151,6 +153,7 @@ class Organizations:
         include_disabled: bool = False,
         parameters: list[Parameters] = [],
         return_external_data: list[str] | None = None,
+        timeout: str | int | None = None,
     ) -> OrganizationsSettingsResponse:
         response = await self._client.request(
             "/api/1/organizations/settings",
@@ -160,5 +163,6 @@ class Organizations:
                 "parameters": parameters,
                 "returnExternalData": return_external_data,
             },
+            timeout=timeout,
         )
         return OrganizationsSettingsResponse(**orjson.loads(response.content))
