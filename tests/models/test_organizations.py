@@ -1,10 +1,10 @@
 import orjson
 
 from iikocloudapi.modules.organizations import (
-    OrganizationsResponse,
-    OrganizationsSettingsResponse,
     OrganizationExtendedModel,
     OrganizationSimpleModel,
+    OrganizationsResponse,
+    OrganizationsSettingsResponse,
 )
 
 available_organizations_json = """{
@@ -66,6 +66,4 @@ def test_organizations_response_with_additional_info():
 
 
 def test_organizations_settings_response():
-    OrganizationsSettingsResponse(
-        **orjson.loads(available_organizations_json)
-    )
+    OrganizationsSettingsResponse(**orjson.loads(available_organizations_json))
