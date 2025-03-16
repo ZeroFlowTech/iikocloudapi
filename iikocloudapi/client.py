@@ -63,9 +63,11 @@ class Client:
             self.session = session
         self.token_info: TokenInfo | None = None
 
-    async def access_token(self) -> AccessTokenResponse:
+    async def access_token(self, api_login: str | None = None) -> AccessTokenResponse:
         response = await self.request(
-            "/api/1/access_token", data={"apiLogin": self.api_login}, auth=False
+            "/api/1/access_token",
+            data={"apiLogin": api_login or self.api_login},
+            auth=False,
         )
         return AccessTokenResponse(**orjson.loads(response.content))
 
