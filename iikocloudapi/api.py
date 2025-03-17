@@ -1,5 +1,6 @@
 from iikocloudapi.client import Client
 from iikocloudapi.modules.auth import Auth
+from iikocloudapi.modules.dictionaries import Dictionaries
 from iikocloudapi.modules.notifications import Notifications
 from iikocloudapi.modules.organizations import Organizations
 
@@ -11,3 +12,4 @@ class iikoCloudApi:
         self.auth = Auth(self._client)
         self.notifications = Notifications(self._client)
         self.organizations = Organizations(self._client)
+        self.dictionaries = Dictionaries(self._client)

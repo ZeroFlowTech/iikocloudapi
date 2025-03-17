@@ -1,0 +1,208 @@
+from decimal import Decimal
+from typing import Literal
+
+import orjson
+from pydantic import BaseModel, Field
+
+from iikocloudapi.client import Client
+from iikocloudapi.modules.terminal_groups import Terminal
+
+
+class CancelCausesResponse(BaseModel):
+    class CancelCause(BaseModel):
+        id: str
+        name: str
+        is_deleted: bool = Field(alias="isDeleted")
+
+    correlation_id: str = Field(alias="correlationId")
+    cancel_causes: list[CancelCause] = Field(alias="cancelCauses")
+
+
+class OrderTypesResponse(BaseModel):
+    class OrderTypes(BaseModel):
+        class Item(BaseModel):
+            id: str
+            name: str
+            orderService_type: Literal[
+                "Common", "DeliveryByCourier", "DeliveryPickUp"
+            ] = Field(alias="orderServiceType")
+            is_deleted: bool = Field(alias="isDeleted")
+            external_revision: int | None = Field(None, alias="externalRevision")
+            is_default: bool | None = Field(None, alias="isDefault")
+
+        organization_id: str = Field(alias="organizationId")
+        items: list[Item]
+
+    correlation_id: str = Field(alias="correlationId")
+    order_types: list[OrderTypes] = Field(alias="orderTypes")
+
+
+class DiscountsResponse(BaseModel):
+    class Discount(BaseModel):
+        class Item(BaseModel):
+            class ProductCategoryDiscount(BaseModel):
+                category_id: str = Field(alias="categoryId")
+                category_name: str | None = Field(alias="categoryName")
+                percent: Decimal
+
+            id: str
+            name: str | None = None
+            percent: Decimal
+            is_categorised_discount: bool = Field(alias="isCategorisedDiscount")
+            product_category_discounts: list[ProductCategoryDiscount] = Field(
+                alias="productCategoryDiscounts"
+            )
+            comment: str | None = None
+            can_be_applied_selectively: bool = Field(alias="canBeAppliedSelectively")
+            min_order_sum: Decimal | None = Field(alias="minOrderSum")
+            mode: Literal["Percent", "FlexibleSum", "FixedSum"]
+            sum: Decimal
+            can_apply_by_card_number: bool = Field(alias="canApplyByCardNumber")
+            is_manual: bool = Field(alias="isManual")
+            is_card: bool = Field(alias="isCard")
+            is_automatic: bool = Field(alias="isAutomatic")
+            is_deleted: bool | None = None
+
+        organization_id: str = Field(alias="organizationId")
+        items: list[Item]
+
+    correlation_id: str = Field(alias="correlationId")
+    discounts: list[Discount]
+
+
+class PaymentTypesResponse(BaseModel):
+    class PaymentType(BaseModel):
+        id: str | None = None
+        code: str | None = None
+        name: str | None = None
+        comment: str | None = None
+        combinable: bool
+        external_revision: int | None = Field(None, alias="externalRevision")
+        applicable_marketing_campaigns: list[str] = Field(
+            alias="applicableMarketingCampaigns"
+        )
+        is_deleted: bool = Field(alias="isDeleted")
+        print_cheque: bool = Field(alias="printCheque")
+        payment_processing_type: Literal["External", "Internal", "Both"] | None = Field(
+            None, alias="paymentProcessingType"
+        )
+        payment_type_kind: str | None = Field(alias="paymentTypeKind")
+        terminal_groups: list[Terminal] = Field(alias="terminalGroups")
+
+    correlation_id: str = Field(alias="correlationId")
+    payment_types: list[PaymentType] = Field(alias="paymentTypes")
+
+
+class RemovalTypesResponse(BaseModel):
+    class RemovalType(BaseModel):
+        id: str
+        name: str
+        comment: str | None = None
+        can_writeoff_to_cafe: bool = Field(alias="canWriteoffToCafe")
+        can_writeoff_to_waiter: bool = Field(alias="canWriteoffToWaiter")
+        can_writeoff_to_user: bool = Field(alias="canWriteoffToUser")
+        reason_qequired: bool = Field(alias="reasonRequired")
+        manual: bool
+        is_deleted: bool = Field(alias="isDeleted")
+
+    correlation_id: str = Field(alias="correlationId")
+    removal_types: list[RemovalType] = Field(alias="removalTypes")
+
+
+class TipsTypesResponse(BaseModel):
+    class TipType(BaseModel):
+        id: str
+        name: str
+        organization_ids: list[str] = Field(alias="organizationIds")
+        orderService_types: list[
+            Literal["Common", "DeliveryByCourier", "DeliveryPickUp"]
+        ] = Field(alias="orderServiceTypes")
+        payment_types_ids: list[str] = Field(alias="paymentTypesIds")
+
+    correlation_id: str = Field(alias="correlationId")
+    tips_types: list[TipType] = Field(alias="tipsTypes")
+
+
+class Dictionaries:
+    def __init__(self, client: Client) -> None:
+        self._client = client
+
+    async def cancel_causes(
+        self,
+        organization_ids: list[str],
+        timeout: str | int | None = None,
+    ) -> CancelCausesResponse:
+        response = await self._client.request(
+            "/api/1/cancel_causes",
+            data={
+                "organizationIds": organization_ids,
+            },
+            timeout=timeout,
+        )
+        return CancelCausesResponse(**orjson.loads(response.content))
+
+    async def order_types(
+        self,
+        organization_ids: list[str],
+        timeout: str | int | None = None,
+    ) -> OrderTypesResponse:
+        response = await self._client.request(
+            "/api/1/order_types",
+            data={
+                "organizationIds": organization_ids,
+            },
+            timeout=timeout,
+        )
+        return OrderTypesResponse(**orjson.loads(response.content))
+
+    async def discounts(
+        self,
+        organization_ids: list[str],
+        timeout: str | int | None = None,
+    ) -> DiscountsResponse:
+        response = await self._client.request(
+            "/api/1/discounts",
+            data={
+                "organizationIds": organization_ids,
+            },
+            timeout=timeout,
+        )
+        return DiscountsResponse(**orjson.loads(response.content))
+
+    async def payment_types(
+        self,
+        organization_ids: list[str],
+        timeout: str | int | None = None,
+    ) -> PaymentTypesResponse:
+        response = await self._client.request(
+            "/api/1/payment_types",
+            data={
+                "organizationIds": organization_ids,
+            },
+            timeout=timeout,
+        )
+        return PaymentTypesResponse(**orjson.loads(response.content))
+
+    async def removal_types(
+        self,
+        organization_ids: list[str],
+        timeout: str | int | None = None,
+    ) -> RemovalTypesResponse:
+        response = await self._client.request(
+            "/api/1/removal_types",
+            data={
+                "organizationIds": organization_ids,
+            },
+            timeout=timeout,
+        )
+        return RemovalTypesResponse(**orjson.loads(response.content))
+
+    async def tips_types(
+        self,
+        timeout: str | int | None = None,
+    ) -> TipsTypesResponse:
+        response = await self._client.request(
+            "/api/1/tips_types",
+            timeout=timeout,
+        )
+        return TipsTypesResponse(**orjson.loads(response.content))

@@ -5,7 +5,7 @@ from iikocloudapi.client import Client
 from iikocloudapi.helpers import ExternalData
 
 
-class Item(BaseModel):
+class Terminal(BaseModel):
     id: str
     organization_id: str = Field(alias="organizationId")
     name: str
@@ -15,7 +15,7 @@ class Item(BaseModel):
 
 class TerminalGroup(BaseModel):
     organization_id: str = Field(alias="organizationId")
-    items: list[Item]
+    items: list[Terminal]
 
 
 class TerminalGroupsResponse(BaseModel):
