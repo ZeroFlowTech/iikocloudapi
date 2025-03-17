@@ -13,12 +13,11 @@ class Terminal(BaseModel):
     external_data: list[ExternalData] | None = Field(None, alias="externalData")
 
 
-class TerminalGroup(BaseModel):
-    organization_id: str = Field(alias="organizationId")
-    items: list[Terminal]
-
-
 class TerminalGroupsResponse(BaseModel):
+    class TerminalGroup(BaseModel):
+        organization_id: str = Field(alias="organizationId")
+        items: list[Terminal]
+
     correlation_id: str = Field(alias="correlationId")
     terminal_groups: list[TerminalGroup] = Field(alias="terminalGroups")
     terminal_groups_in_sleep: list[TerminalGroup] = Field(alias="terminalGroupsInSleep")
