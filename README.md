@@ -36,10 +36,14 @@ if __name__ == "__main__":
 
 [Документация iikoCloud API](https://github.com/ZeroFlowTech)
 
-- Authorization
+- [Authorization](https://api-ru.iiko.services/#tag/Authorization)
     - [x] [Retrieve session key for API user.](https://api-ru.iiko.services/#tag/Authorization/paths/~1api~11~1access_token/post)
-- Notifications
+- [Notifications](https://api-ru.iiko.services/#tag/Notifications)
     - [x] [Send notification to external systems (iikoFront and iikoWeb).](https://api-ru.iiko.services/#tag/Notifications/paths/~1api~11~1notifications~1send/post)
-- Organizations
+- [Organizations](https://api-ru.iiko.services/#tag/Organizations)
     - [x] [Returns organizations available to api-login user.](https://api-ru.iiko.services/#tag/Organizations/paths/~1api~11~1organizations/post)
     - [x] [Returns available to api-login user organizations specified settings.](https://api-ru.iiko.services/#tag/Organizations/paths/~1api~11~1organizations~1settings/post)
+- [Terminal groups](https://api-ru.iiko.services/#tag/Terminal-groups)
+    - [x] [Method that returns information on groups of delivery terminals.](https://api-ru.iiko.services/#tag/Terminal-groups/paths/~1api~11~1terminal_groups/post)
+    - [x] [Returns information on availability of group of terminals.](https://api-ru.iiko.services/#tag/Terminal-groups/paths/~1api~11~1terminal_groups~1is_alive/post)
+    - [x] [Awake terminal groups from sleep mode.](https://api-ru.iiko.services/#tag/Terminal-groups/paths/~1api~11~1terminal_groups~1awake/post)
