@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "iikocloudapi"
 version = "0.3.0"
-description = "iikoCloud API client"
+description = "iikoCloud API async client"
 authors = ["Deni Tazurkaev <sha256deni@gmail.com>"]
 license = "MIT"
 readme = "README.md"
@@ -9,7 +9,11 @@ homepage = "https://github.com/ZeroFlowTech/iikocloudapi"
 repository = "https://github.com/ZeroFlowTech/iikocloudapi"
 keywords = [
   "iiko",
+  "iikocloud",
+  "iiko-cloud",
   "iiko-api",
+  "iikocloudapi",
+  "iiko-cloud-api",
   "async",
   "asyncio",
 ]
