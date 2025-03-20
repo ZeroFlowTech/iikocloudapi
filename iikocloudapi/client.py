@@ -9,7 +9,9 @@ from typing import Any
 
 import orjson
 from httpx import AsyncClient, HTTPStatusError, Response
-from pydantic import BaseModel, Field
+from pydantic import Field
+
+from iikocloudapi.helpers import BaseResponseModel
 
 TOKEN_EXPIRES_TIME = datetime.timedelta(minutes=15)
 DEFAULT_API_URL = "https://api-ru.iiko.services"
@@ -19,8 +21,7 @@ BASE_HEADERS = {
 }
 
 
-class ErrorDataModel(BaseModel):
-    correlation_id: str = Field(alias="correlationId")
+class ErrorDataModel(BaseResponseModel):
     error_description: str = Field(alias="errorDescription")
     error: str | None = None
 
@@ -31,8 +32,7 @@ class HTTPError(Exception):
         self.http = http
 
 
-class AccessTokenResponse(BaseModel):
-    correlation_id: str = Field(alias="correlationId")
+class AccessTokenResponse(BaseResponseModel):
     token: str
 
 

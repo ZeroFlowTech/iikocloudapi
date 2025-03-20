@@ -1,13 +1,17 @@
 from copy import deepcopy
 from typing import Any, Optional, Tuple, Type
 
-from pydantic import BaseModel, create_model
+from pydantic import BaseModel, Field, create_model
 from pydantic.fields import FieldInfo
 
 
 class ExternalData(BaseModel):
     key: str
     value: str
+
+
+class BaseResponseModel(BaseModel):
+    correlation_id: str = Field(alias="correlationId")
 
 
 def partial_model(model: Type[BaseModel]):

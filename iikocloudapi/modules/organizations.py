@@ -6,7 +6,7 @@ import orjson
 from pydantic import BaseModel, Field
 
 from iikocloudapi.client import Client
-from iikocloudapi.helpers import ExternalData, partial_model
+from iikocloudapi.helpers import BaseResponseModel, ExternalData, partial_model
 
 Parameters = Literal[
     "PricesVatInclusive",
@@ -113,13 +113,11 @@ class OrganizationExtendedOptionalModel(OrganizationExtendedModel):
     pass
 
 
-class OrganizationsResponse(BaseModel):
-    correlation_id: str = Field(alias="correlationId")
+class OrganizationsResponse(BaseResponseModel):
     organizations: list[OrganizationSimpleModel | OrganizationExtendedModel]
 
 
-class OrganizationsSettingsResponse(BaseModel):
-    correlation_id: str = Field(alias="correlationId")
+class OrganizationsSettingsResponse(BaseResponseModel):
     organizations: list[OrganizationExtendedOptionalModel]
 
 

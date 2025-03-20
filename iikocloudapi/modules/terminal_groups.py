@@ -2,7 +2,7 @@ import orjson
 from pydantic import BaseModel, Field
 
 from iikocloudapi.client import Client
-from iikocloudapi.helpers import ExternalData
+from iikocloudapi.helpers import BaseResponseModel, ExternalData
 
 
 class Terminal(BaseModel):
@@ -13,12 +13,11 @@ class Terminal(BaseModel):
     external_data: list[ExternalData] | None = Field(None, alias="externalData")
 
 
-class TerminalGroupsResponse(BaseModel):
+class TerminalGroupsResponse(BaseResponseModel):
     class TerminalGroup(BaseModel):
         organization_id: str = Field(alias="organizationId")
         items: list[Terminal]
 
-    correlation_id: str = Field(alias="correlationId")
     terminal_groups: list[TerminalGroup] = Field(alias="terminalGroups")
     terminal_groups_in_sleep: list[TerminalGroup] = Field(alias="terminalGroupsInSleep")
 
@@ -29,8 +28,7 @@ class IsAliveStatus(BaseModel):
     organization_id: str = Field(alias="organizationId")
 
 
-class TerminalIsAliveResponse(BaseModel):
-    correlation_id: str = Field(alias="correlationId")
+class TerminalIsAliveResponse(BaseResponseModel):
     is_alive_status: list[IsAliveStatus] = Field(alias="isAliveStatus")
 
 

@@ -5,20 +5,20 @@ import orjson
 from pydantic import BaseModel, Field
 
 from iikocloudapi.client import Client
+from iikocloudapi.helpers import BaseResponseModel
 from iikocloudapi.modules.terminal_groups import Terminal
 
 
-class CancelCausesResponse(BaseModel):
+class CancelCausesResponse(BaseResponseModel):
     class CancelCause(BaseModel):
         id: str
         name: str
         is_deleted: bool = Field(alias="isDeleted")
 
-    correlation_id: str = Field(alias="correlationId")
     cancel_causes: list[CancelCause] = Field(alias="cancelCauses")
 
 
-class OrderTypesResponse(BaseModel):
+class OrderTypesResponse(BaseResponseModel):
     class OrderTypes(BaseModel):
         class Item(BaseModel):
             id: str
@@ -33,11 +33,10 @@ class OrderTypesResponse(BaseModel):
         organization_id: str = Field(alias="organizationId")
         items: list[Item]
 
-    correlation_id: str = Field(alias="correlationId")
     order_types: list[OrderTypes] = Field(alias="orderTypes")
 
 
-class DiscountsResponse(BaseModel):
+class DiscountsResponse(BaseResponseModel):
     class Discount(BaseModel):
         class Item(BaseModel):
             class ProductCategoryDiscount(BaseModel):
@@ -66,11 +65,10 @@ class DiscountsResponse(BaseModel):
         organization_id: str = Field(alias="organizationId")
         items: list[Item]
 
-    correlation_id: str = Field(alias="correlationId")
     discounts: list[Discount]
 
 
-class PaymentTypesResponse(BaseModel):
+class PaymentTypesResponse(BaseResponseModel):
     class PaymentType(BaseModel):
         id: str | None = None
         code: str | None = None
@@ -89,11 +87,10 @@ class PaymentTypesResponse(BaseModel):
         payment_type_kind: str | None = Field(alias="paymentTypeKind")
         terminal_groups: list[Terminal] = Field(alias="terminalGroups")
 
-    correlation_id: str = Field(alias="correlationId")
     payment_types: list[PaymentType] = Field(alias="paymentTypes")
 
 
-class RemovalTypesResponse(BaseModel):
+class RemovalTypesResponse(BaseResponseModel):
     class RemovalType(BaseModel):
         id: str
         name: str
@@ -105,11 +102,10 @@ class RemovalTypesResponse(BaseModel):
         manual: bool
         is_deleted: bool = Field(alias="isDeleted")
 
-    correlation_id: str = Field(alias="correlationId")
     removal_types: list[RemovalType] = Field(alias="removalTypes")
 
 
-class TipsTypesResponse(BaseModel):
+class TipsTypesResponse(BaseResponseModel):
     class TipType(BaseModel):
         id: str
         name: str
@@ -119,7 +115,6 @@ class TipsTypesResponse(BaseModel):
         ] = Field(alias="orderServiceTypes")
         payment_types_ids: list[str] = Field(alias="paymentTypesIds")
 
-    correlation_id: str = Field(alias="correlationId")
     tips_types: list[TipType] = Field(alias="tipsTypes")
 
 

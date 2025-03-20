@@ -1,11 +1,11 @@
 import orjson
-from pydantic import BaseModel, Field
 
 from iikocloudapi.client import Client
+from iikocloudapi.helpers import BaseResponseModel
 
 
-class SendResponse(BaseModel):
-    correlation_id: str = Field(alias="correlationId")
+class SendResponse(BaseResponseModel):
+    pass
 
 
 class Notifications:
