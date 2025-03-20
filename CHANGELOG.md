@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 ---
+## [0.3.0](https://github.com/ZeroFlowTech/iikocloudapi/compare/v0.2.0..v0.3.0) - 2025-03-20
+
+### Bug Fixes
+
+- pass timeout arg in organizations module - ([2b6204e](https://github.com/ZeroFlowTech/iikocloudapi/commit/2b6204e30218a57f6f14180bdbde9851856724ca)) - Deni Tazurkaev
+- move terminal group - ([4611442](https://github.com/ZeroFlowTech/iikocloudapi/commit/4611442ddcf2cf35ec523bf0d9bf36b8b23280a4)) - Deni Tazurkaev
+
+### Features
+
+- add terminal group module - ([c06dadd](https://github.com/ZeroFlowTech/iikocloudapi/commit/c06daddf994fb3c122c47bd9f6bd234a57db6c18)) - Deni Tazurkaev
+- add dictionaries module - ([f820927](https://github.com/ZeroFlowTech/iikocloudapi/commit/f8209278efc27ad6fa60996ed7d98bd8f4138270)) - Deni Tazurkaev
+- add menu module - ([6aaa65c](https://github.com/ZeroFlowTech/iikocloudapi/commit/6aaa65cec257aa597fe4c6c5289823822f54e59f)) - Deni Tazurkaev
+
+---
 ## [0.2.0](https://github.com/ZeroFlowTech/iikocloudapi/compare/v0.1.0..v0.2.0) - 2025-03-16
 
 ### Features
