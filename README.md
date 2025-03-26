@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
 ## Реализованные методы
 
-[Документация iikoCloud API](https://github.com/ZeroFlowTech)
+[Документация iikoCloud API](https://api-ru.iiko.services/)
 
 - [Authorization](https://api-ru.iiko.services/#tag/Authorization)
     - [x] [Retrieve session key for API user.](https://api-ru.iiko.services/#tag/Authorization/paths/~1api~11~1access_token/post)
