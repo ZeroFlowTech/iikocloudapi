@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 ---
+## [0.3.1](https://github.com/ZeroFlowTech/iikocloudapi/compare/v0.3.0..v0.3.1) - 2025-03-26
+
+### Miscellaneous Chores
+
+- update package meta - ([468cd6a](https://github.com/ZeroFlowTech/iikocloudapi/commit/468cd6ada9177e1e7fe7e75aa880c707b00ba428)) - Deni Tazurkaev
+- add linter rules, minor fixes - ([72d6d9d](https://github.com/ZeroFlowTech/iikocloudapi/commit/72d6d9d8d5e414391d3bd299505c791bd66726d6)) - Deni Tazurkaev
+
+---
 ## [0.3.0](https://github.com/ZeroFlowTech/iikocloudapi/compare/v0.2.0..v0.3.0) - 2025-03-20
 
 ### Bug Fixes
@@ -14,7 +22,7 @@ All notable changes to this project will be documented in this file. See [conven
 
 - add terminal group module - ([c06dadd](https://github.com/ZeroFlowTech/iikocloudapi/commit/c06daddf994fb3c122c47bd9f6bd234a57db6c18)) - Deni Tazurkaev
 - add dictionaries module - ([f820927](https://github.com/ZeroFlowTech/iikocloudapi/commit/f8209278efc27ad6fa60996ed7d98bd8f4138270)) - Deni Tazurkaev
-- add menu module - ([6aaa65c](https://github.com/ZeroFlowTech/iikocloudapi/commit/6aaa65cec257aa597fe4c6c5289823822f54e59f)) - Deni Tazurkaev
+- add menu module - ([88c3d12](https://github.com/ZeroFlowTech/iikocloudapi/commit/88c3d125ebbdce26b6d78a79e162b6436525761b)) - Deni Tazurkaev
 
 ---
 ## [0.2.0](https://github.com/ZeroFlowTech/iikocloudapi/compare/v0.1.0..v0.2.0) - 2025-03-16
