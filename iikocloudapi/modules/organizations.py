@@ -149,7 +149,7 @@ class Organizations:
         self,
         organization_ids: list[str] | None = None,
         include_disabled: bool = False,
-        parameters: list[Parameters] = [],
+        parameters: list[Parameters] | None = None,
         return_external_data: list[str] | None = None,
         timeout: str | int | None = None,
     ) -> OrganizationsSettingsResponse:
@@ -158,7 +158,7 @@ class Organizations:
             data={
                 "organizationIds": organization_ids,
                 "includeDisabled": include_disabled,
-                "parameters": parameters,
+                "parameters": parameters or [],
                 "returnExternalData": return_external_data,
             },
             timeout=timeout,

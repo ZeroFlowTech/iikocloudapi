@@ -1,5 +1,5 @@
 from copy import deepcopy
-from typing import Any, Optional, Tuple, Type
+from typing import Any
 
 from pydantic import BaseModel, Field, create_model
 from pydantic.fields import FieldInfo
@@ -14,13 +14,13 @@ class BaseResponseModel(BaseModel):
     correlation_id: str = Field(alias="correlationId")
 
 
-def partial_model(model: Type[BaseModel]):
+def partial_model(model: type[BaseModel]):
     def make_field_optional(
         field: FieldInfo, default: Any = None
-    ) -> Tuple[Any, FieldInfo]:
+    ) -> tuple[Any, FieldInfo]:
         new = deepcopy(field)
         new.default = default
-        new.annotation = Optional[field.annotation]  # type: ignore
+        new.annotation = field.annotation | None  # type: ignore
         return new.annotation, new
 
     return create_model(

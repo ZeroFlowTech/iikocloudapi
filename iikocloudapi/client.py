@@ -39,10 +39,10 @@ class AccessTokenResponse(BaseResponseModel):
 class TokenInfo:
     def __init__(self, access_data: AccessTokenResponse) -> None:
         self.access_data = access_data
-        self.time = datetime.datetime.now()
+        self.time = datetime.datetime.now(datetime.UTC)
 
     def is_expired(self) -> bool:
-        delta = datetime.datetime.now() - TOKEN_EXPIRES_TIME
+        delta = datetime.datetime.now(datetime.UTC) - TOKEN_EXPIRES_TIME
         return delta > self.time
 
 
@@ -82,6 +82,7 @@ class Client:
         method: str = "POST",
         data: Any = None,
         timeout: str | int | None = None,
+        *,
         auth: bool = True,
     ) -> Response:
         if auth and (not self.token_info or self.token_info.is_expired()):
@@ -105,7 +106,7 @@ class Client:
         except HTTPStatusError as err:
             if err.response.status_code == UNAUTHORIZED and auth:
                 await self.auth()
-                return await self.request(path, data, timeout, False)
+                return await self.request(path, data=data, timeout=timeout, auth=False)
             if err.response.status_code in (
                 UNAUTHORIZED,
                 BAD_REQUEST,
@@ -115,8 +116,8 @@ class Client:
                 raise HTTPError(
                     error_data=ErrorDataModel(**orjson.loads(err.response.content)),
                     http=err,
-                )
-            raise err
+                ) from err
+            raise
         return response
 
     def build_path(self, path: str) -> str:

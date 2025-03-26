@@ -198,18 +198,18 @@ class ComboResponse(BaseModel):
             is_main_group: bool = Field(alias="isMainGroup")
             products: list[Product]
 
-        sourceActionId: str = Field(alias="sourceActionId")
-        categoryId: str | None = Field(None, alias="categoryId")
+        source_action_id: str = Field(alias="sourceActionId")
+        category_id: str | None = Field(None, alias="categoryId")
         name: str
-        priceModificationType: PriceModificationTypeEnum = Field(
+        price_modification_type: PriceModificationTypeEnum = Field(
             alias="priceModificationType"
         )
-        priceModification: Decimal = Field(alias="priceModification")
-        isActive: bool | None = Field(None, alias="isActive")
-        startDate: str | None = Field(None, alias="startDate")
-        expirationDate: str | None = Field(None, alias="expirationDate")
-        lackingGroupsToSuggest: int | None = Field(None, alias="lackingGroupsToSuggest")
-        includeModifiers: bool | None = Field(None, alias="includeModifiers")
+        price_modification: Decimal = Field(alias="priceModification")
+        is_active: bool | None = Field(None, alias="isActive")
+        start_date: str | None = Field(None, alias="startDate")
+        expiration_date: str | None = Field(None, alias="expirationDate")
+        lacking_groups_to_suggest: int | None = Field(None, alias="lackingGroupsToSuggest")
+        include_modifiers: bool | None = Field(None, alias="includeModifiers")
         groups: list[Group]
 
     class ComboCategory(BaseModel):

@@ -23,7 +23,7 @@ class OrderTypesResponse(BaseResponseModel):
         class Item(BaseModel):
             id: str
             name: str
-            orderService_type: Literal[
+            order_service_type: Literal[
                 "Common", "DeliveryByCourier", "DeliveryPickUp"
             ] = Field(alias="orderServiceType")
             is_deleted: bool = Field(alias="isDeleted")
@@ -110,7 +110,7 @@ class TipsTypesResponse(BaseResponseModel):
         id: str
         name: str
         organization_ids: list[str] = Field(alias="organizationIds")
-        orderService_types: list[
+        order_service_types: list[
             Literal["Common", "DeliveryByCourier", "DeliveryPickUp"]
         ] = Field(alias="orderServiceTypes")
         payment_types_ids: list[str] = Field(alias="paymentTypesIds")

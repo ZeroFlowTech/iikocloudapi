@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "iikocloudapi"
-version = "0.3.0"
+version = "0.3.1"
 description = "iikoCloud API async client"
 authors = ["Deni Tazurkaev <sha256deni@gmail.com>"]
 license = "MIT"
@@ -52,3 +52,49 @@ pytest = "^8.3.5"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+  "ALL", # include all the rules, including new ones
+]
+ignore = [
+  "COM812", "ISC001",  # for ruff formatter
+  "ANN001",  # for default=True like vars
+  "ANN201",  # for handlers return
+  "ANN204",  # for __init__ return None
+  "ANN401",  # for Any
+  "EM101", "TRY003",  # for strings in exceptions
+  "D", "TD", "FIX",  # for TODOs
+  "ERA",     # for commented code
+  "RET502",  # for return without None
+  "RET503",  # for function without return
+  "RUF001",  # for cyrillic
+  "EM102",   # ignore f-string literal in exceptions
+  "FA102",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"iikocloudapi/api.py" = [
+  "N801",
+  "N816",
+]
+"iikocloudapi/modules/*" = [
+  "FBT001",
+  "FBT002",
+  "PLR0913",
+]
+"iikocloudapi/helpers.py" = [
+  "PGH003",
+]
+"tests/*" = [
+  "ANN201",
+  "INP001",
+  "D100",
+  "D103",
+  "S101",
+  "S105",
+  "E501",
+]
