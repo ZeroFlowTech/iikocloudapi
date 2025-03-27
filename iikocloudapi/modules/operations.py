@@ -21,6 +21,17 @@ class Operations:
         correlation_id: str,
         timeout: str | int | None = None,
     ) -> CommandsStatusResponse:
+        """Get status of command.
+
+        Args:
+            organization_id (str): Organization id which "correlationId" belongs to.
+                Can be obtained by `/api/1/organizations` operation.
+            correlation_id (str): Operation ID obtained from any command supporting operations.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Operations/paths/~1api~11~1commands~1status/post
+        """
         response = await self._client.request(
             "/api/1/commands/status",
             data={

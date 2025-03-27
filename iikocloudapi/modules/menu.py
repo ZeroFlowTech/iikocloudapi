@@ -236,6 +236,14 @@ class Menu:
         self._client = client
 
     async def __call__(self, timeout: str | int | None = None) -> MenuResponse:
+        """External menus with price categories.
+
+        Args:
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Menu/paths/~1api~12~1menu/post
+        """
         response = await self._client.request(
             "/api/2/menu",
             timeout=timeout,
@@ -252,6 +260,27 @@ class Menu:
         start_revision: int | None = None,
         timeout: str | int | None = None,
     ) -> MenuByIdResponse:
+        """Retrieve external menu by ID.
+
+        Args:
+            external_menu_id (str): External menu id
+                Can be obtained by `/api/2/menu` operation.
+            organization_ids (list[str]): Organization IDs.
+                Can be obtained by `/api/1/organizations` operation.
+            price_category_id (str | None, optional): Price category id.
+                Can be obtained by api/2/menu operation.
+                Defaults to None.
+            version (int | None, optional): Version of the result data model.
+                Defaults to None.
+            language (str | None, optional): Language of the external menu.
+                Defaults to None.
+            start_revision (int | None, optional): Start revision.
+                Defaults to None.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Menu/paths/~1api~12~1menu~1by_id/post
+        """
         response = await self._client.request(
             "/api/2/menu/by_id",
             data={
@@ -273,6 +302,22 @@ class Menu:
         terminal_groups_ids: list[str] | None = None,
         timeout: str | int | None = None,
     ) -> StopListsResponse:
+        """Out-of-stock items.
+
+        Args:
+            organization_ids (list[str]): Organizations for which out-of-stock lists will be requested.
+                Can be obtained by `/api/1/organizations` operation.
+            return_size (bool, optional): Flag indicating the need to return the sizes of the dish.
+                Defaults to False.
+            terminal_groups_ids (list[str] | None, optional): List of terminal groups
+                for which you need to get out-of-stock lists.
+                Can be obtained by `/api/1/terminal_groups` operation.
+                Defaults to None.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Menu/paths/~1api~11~1stop_lists/post
+        """
         response = await self._client.request(
             "/api/1/stop_lists",
             data={
@@ -291,6 +336,19 @@ class Menu:
         items: list[Product | Compound],
         timeout: str | int | None = None,
     ) -> StopListsCheckResponse:
+        """Check items in out-of-stock list.
+
+        Args:
+            organization_id (str): Organization ID.
+                Can be obtained by `/api/1/organizations` operation.
+            terminal_group_id (str): Front group ID the order must be sent to.
+                Can be obtained by `/api/1/terminal_groups` operation.
+            items (list[Product  |  Compound]): Order items.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Menu/paths/~1api~11~1stop_lists~1check/post
+        """
         response = await self._client.request(
             "/api/1/stop_lists/check",
             data={
@@ -309,6 +367,19 @@ class Menu:
         items: list[ItemStopListAdd],
         timeout: str | int | None = None,
     ) -> BaseResponseModel:
+        """Add items to out-of-stock list. (You should have extra rights to use this method).
+
+        Args:
+            organization_id (str): Organization ID.
+                Can be obtained by `/api/1/organizations` operation.
+            terminal_group_id (str): Terminal group ID.
+                Can be obtained by `/api/1/terminal_groups` operation.
+            items (list[ItemStopListAdd]): Items for adding to out-of-stock list.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Menu/paths/~1api~11~1stop_lists~1add/post
+        """
         response = await self._client.request(
             "/api/1/stop_lists/add",
             data={
@@ -327,6 +398,19 @@ class Menu:
         items: list[ItemStopListRemove],
         timeout: str | int | None = None,
     ) -> BaseResponseModel:
+        """Remove items from out-of-stock list. (You should have extra rights to use this method).
+
+        Args:
+            organization_id (str): Organization ID.
+                Can be obtained by `/api/1/organizations` operation.
+            terminal_group_id (str): Terminal group ID.
+                Can be obtained by `/api/1/terminal_groups` operation.
+            items (list[ItemStopListAdd]): Items for removing from out-of-stock list.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Menu/paths/~1api~11~1stop_lists~1remove/post
+        """
         response = await self._client.request(
             "/api/1/stop_lists/remove",
             data={
@@ -344,6 +428,18 @@ class Menu:
         terminal_group_id: str,
         timeout: str | int | None = None,
     ) -> BaseResponseModel:
+        """Clear out-of-stock list. (You should have extra rights to use this method).
+
+        Args:
+            organization_id (str): Organization ID.
+                Can be obtained by `/api/1/organizations` operation.
+            terminal_group_id (str): Terminal group ID.
+                Can be obtained by `/api/1/terminal_groups` operation.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Menu/paths/~1api~11~1stop_lists~1clear/post
+        """
         response = await self._client.request(
             "/api/1/stop_lists/clear",
             data={
@@ -360,6 +456,17 @@ class Menu:
         extra_data: bool = False,
         timeout: str | int | None = None,
     ) -> ComboResponse:
+        """Get combos info.
+
+        Args:
+            organization_id (str): Organization id.
+            extra_data (bool, optional): Extra data.
+                Defaults to False.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Menu/paths/~1api~11~1combo/post
+        """
         response = await self._client.request(
             "/api/1/combo",
             data={
@@ -376,6 +483,16 @@ class Menu:
         items: list[Product | Compound],
         timeout: str | int | None = None,
     ) -> ComboCalculateResponse:
+        """Calculate combo price.
+
+        Args:
+            organization_id (str): Organization id.
+            items (list[Product  |  Compound]): Items with modifiers included in combo.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Menu/paths/~1api~11~1combo~1calculate/post
+        """
         response = await self._client.request(
             "/api/1/combo/calculate",
             data={
@@ -392,6 +509,21 @@ class Menu:
         start_revision: int | None = None,
         timeout: str | int | None = None,
     ) -> dict:
+        """Menu.
+
+        Args:
+            organization_id (str): Organization ID.
+                Can be obtained by `/api/1/organizations` operation.
+            start_revision (int | None, optional): The revision (version) of the menu saved on the integration side.
+                Use `0` for the first request for each organization. In every subsequent request,
+                the `startRevision` field should contain the value of the `revision` field
+                received in the response to the previous request.
+                Defaults to None.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Menu/paths/~1api~11~1nomenclature/post
+        """
         response = await self._client.request(
             "/api/1/nomenclature",
             data={

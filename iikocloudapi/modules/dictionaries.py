@@ -127,6 +127,16 @@ class Dictionaries:
         organization_ids: list[str],
         timeout: str | int | None = None,
     ) -> CancelCausesResponse:
+        """Delivery cancel causes.
+
+        Args:
+            organization_ids (list[str]): Organizations ids which delivery cancel causes needs to be returned.
+                Can be obtained by `/api/1/organizations` operation.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Dictionaries/paths/~1api~11~1cancel_causes/post
+        """
         response = await self._client.request(
             "/api/1/cancel_causes",
             data={
@@ -141,6 +151,16 @@ class Dictionaries:
         organization_ids: list[str],
         timeout: str | int | None = None,
     ) -> OrderTypesResponse:
+        """Order types.
+
+        Args:
+            organization_ids (list[str]): Organizations IDs which payment types have to be returned.
+                Can be obtained by `/api/1/organizations` operation.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Dictionaries/paths/~1api~11~1deliveries~1order_types/post
+        """
         response = await self._client.request(
             "/api/1/order_types",
             data={
@@ -155,6 +175,16 @@ class Dictionaries:
         organization_ids: list[str],
         timeout: str | int | None = None,
     ) -> DiscountsResponse:
+        """Discounts / surcharges.
+
+        Args:
+            organization_ids (list[str]): Organization IDs that require discounts return.
+                Can be obtained by `/api/1/organizations` operation.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Dictionaries/paths/~1api~11~1discounts/post
+        """
         response = await self._client.request(
             "/api/1/discounts",
             data={
@@ -169,6 +199,16 @@ class Dictionaries:
         organization_ids: list[str],
         timeout: str | int | None = None,
     ) -> PaymentTypesResponse:
+        """Payment types.
+
+        Args:
+            organization_ids (list[str]): Organizations IDs which payment types have to be returned.
+                Can be obtained by `/api/1/organizations` operation.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Dictionaries/paths/~1api~11~1payment_types/post
+        """
         response = await self._client.request(
             "/api/1/payment_types",
             data={
@@ -183,6 +223,16 @@ class Dictionaries:
         organization_ids: list[str],
         timeout: str | int | None = None,
     ) -> RemovalTypesResponse:
+        """Removal types (reasons for deletion).
+
+        Args:
+            organization_ids (list[str]): Organizations IDs which payment types have to be returned.
+                Can be obtained by `/api/1/organizations` operation.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Dictionaries/paths/~1api~11~1removal_types/post
+        """
         response = await self._client.request(
             "/api/1/removal_types",
             data={
@@ -196,6 +246,14 @@ class Dictionaries:
         self,
         timeout: str | int | None = None,
     ) -> TipsTypesResponse:
+        """Get tips types for api-login`s rms group.
+
+        Args:
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Dictionaries/paths/~1api~11~1tips_types/post
+        """
         response = await self._client.request(
             "/api/1/tips_types",
             timeout=timeout,

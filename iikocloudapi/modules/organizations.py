@@ -133,6 +133,25 @@ class Organizations:
         return_external_data: list[str] | None = None,
         timeout: str | int | None = None,
     ) -> OrganizationsResponse:
+        """Returns organizations available to api-login user.
+
+        Args:
+            organization_ids (list[str] | None, optional): Organizations IDs which have to be returned.
+                By default - all organizations from apiLogin. Can be obtained by `/api/1/organizations` operation.
+                Defaults to None.
+            return_additional_info (bool, optional): A sign whether additional information about the organization
+                should be returned (RMS version, country, restaurantAddress, etc.), or only minimal information
+                should be returned (id and name).
+                Defaults to False.
+            include_disabled (bool, optional): Attribute that shows that response contains disabled organizations.
+                Defaults to False.
+            return_external_data (list[str] | None, optional): External data keys that have to be returned.
+                Defaults to None.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Organizations/paths/~1api~11~1organizations/post
+        """
         response = await self._client.request(
             "/api/1/organizations",
             data={
@@ -153,6 +172,22 @@ class Organizations:
         return_external_data: list[str] | None = None,
         timeout: str | int | None = None,
     ) -> OrganizationsSettingsResponse:
+        """Returns available to api-login user organizations specified settings.
+
+        Args:
+            organization_ids (list[str] | None, optional): Organizations IDs which have to be returned.
+                By default - all organizations from apiLogin. Defaults to None.
+            include_disabled (bool, optional): Attribute that shows that response contains disabled organizations.
+                Defaults to False.
+            parameters (list[Parameters] | None, optional): Parameters of information to be present in response.
+                Defaults to None.
+            return_external_data (list[str] | None, optional): External data keys that have to be returned.
+                Defaults to None.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Organizations/paths/~1api~11~1organizations~1settings/post
+        """
         response = await self._client.request(
             "/api/1/organizations/settings",
             data={

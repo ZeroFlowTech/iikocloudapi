@@ -21,6 +21,19 @@ class Notifications:
         organization_id: str,
         timeout: str | int | None = None,
     ) -> SendResponse:
+        """Send notification to external systems (iikoFront and iikoWeb).
+
+        Args:
+            order_source (str): Order source.
+            order_id (str): Order ID.
+            additional_info (str): Additional info about the problem.
+            message_type (str): Message type.
+            organization_id (str): Organization UOC Id.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Notifications/paths/~1api~11~1notifications~1send/post
+        """
         response = await self._client.request(
             "/api/1/notifications/send",
             data={

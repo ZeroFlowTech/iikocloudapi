@@ -50,6 +50,21 @@ class TerminalGroups:
         return_external_data: list[str] | None = None,
         timeout: str | int | None = None,
     ) -> TerminalGroupsResponse:
+        """Method that returns information on groups of delivery terminals.
+
+        Args:
+            organization_ids (list[str]): Organizations IDs for which information is requested.
+                Can be obtained by `/api/1/organizations` operation.
+            include_disabled (bool | None, optional): Attribute that shows that response
+                contains disabled terminal groups.
+                Defaults to None.
+            return_external_data (list[str] | None, optional): External data keys that have to be returned.
+                Defaults to None.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Terminal-groups/paths/~1api~11~1terminal_groups/post
+        """
         response = await self._client.request(
             "/api/1/terminal_groups",
             data={
@@ -63,10 +78,22 @@ class TerminalGroups:
 
     async def is_alive(
         self,
-        terminal_group_ids: list[str],
         organization_ids: list[str],
+        terminal_group_ids: list[str],
         timeout: str | int | None = None,
     ) -> TerminalIsAliveResponse:
+        """Returns information on availability of group of terminals.
+
+        Args:
+            organization_ids (list[str]): Organization IDs.
+                Can be obtained by `/api/1/organizations` operation.
+            terminal_group_ids (list[str]): List of terminal groups IDs.
+                Can be obtained by `/api/1/terminal_groups` operation.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Terminal-groups/paths/~1api~11~1terminal_groups~1is_alive/post
+        """
         response = await self._client.request(
             "/api/1/terminal_groups/is_alive",
             data={
@@ -79,10 +106,22 @@ class TerminalGroups:
 
     async def awake(
         self,
-        terminal_group_ids: list[str],
         organization_ids: list[str],
+        terminal_group_ids: list[str],
         timeout: str | int | None = None,
     ) -> TerminalAwakeResponse:
+        """_summary_
+
+        Args:
+            organization_ids (list[str]):  Organization IDs.
+                Can be obtained by `/api/1/organizations` operation.
+            terminal_group_ids (list[str]): List of terminal groups IDs.
+                Can be obtained by `/api/1/terminal_groups` operation.
+            timeout (str | int | None, optional): Timeout in seconds.
+                Defaults to None.
+
+        Ref: https://api-ru.iiko.services/#tag/Terminal-groups/paths/~1api~11~1terminal_groups~1awake/post
+        """
         response = await self._client.request(
             "/api/1/terminal_groups/awake",
             data={
