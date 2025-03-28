@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 ---
+## [0.4.0](https://github.com/ZeroFlowTech/iikocloudapi/compare/v0.3.1..v0.4.0) - 2025-03-28
+
+### Bug Fixes
+
+- headers for every request - ([cf286a4](https://github.com/ZeroFlowTech/iikocloudapi/commit/cf286a4d25fe9f8f14c5ee478dd7a6a1427ee059)) - Deni Tazurkaev
+- retrieve external menu by ID response schema - ([e351983](https://github.com/ZeroFlowTech/iikocloudapi/commit/e351983a8f82c54d7f778f38e283862e37ccb2e9)) - Deni Tazurkaev
+
+### Documentation
+
+- add module methods api ref - ([2451e0a](https://github.com/ZeroFlowTech/iikocloudapi/commit/2451e0acc7cbcde732d9b449ccdebd925ab96e03)) - Deni Tazurkaev
+
+### Features
+
+- add operations module - ([55d4263](https://github.com/ZeroFlowTech/iikocloudapi/commit/55d4263bed6a7c357b562fe35a1769c25189afb8)) - Deni Tazurkaev
+
+### Miscellaneous Chores
+
+- code style - ([5a56797](https://github.com/ZeroFlowTech/iikocloudapi/commit/5a56797b7498f101358278e8f042671c6f890a20)) - Deni Tazurkaev
+
+### Refactoring
+
+- add organization_ids property - ([328225f](https://github.com/ZeroFlowTech/iikocloudapi/commit/328225fec5988a1a68cfc35454e7d0d618f13ef6)) - Deni Tazurkaev
+
+---
 ## [0.3.1](https://github.com/ZeroFlowTech/iikocloudapi/compare/v0.3.0..v0.3.1) - 2025-03-26
 
 ### Miscellaneous Chores
