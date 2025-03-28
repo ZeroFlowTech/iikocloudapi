@@ -97,9 +97,7 @@ class Client:
         if data:
             content = orjson.dumps(data)
 
-        response = await self.session.request(
-            method, self.build_path(path), content=content, headers=headers
-        )
+        response = await self.session.request(method, self.build_path(path), content=content, headers=headers)
 
         try:
             response.raise_for_status()

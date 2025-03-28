@@ -15,9 +15,7 @@ class BaseResponseModel(BaseModel):
 
 
 def partial_model(model: type[BaseModel]):
-    def make_field_optional(
-        field: FieldInfo, default: Any = None
-    ) -> tuple[Any, FieldInfo]:
+    def make_field_optional(field: FieldInfo, default: Any = None) -> tuple[Any, FieldInfo]:
         new = deepcopy(field)
         new.default = default
         new.annotation = field.annotation | None  # type: ignore
@@ -27,8 +25,5 @@ def partial_model(model: type[BaseModel]):
         f"Partial{model.__name__}",
         __base__=model,
         __module__=model.__module__,
-        **{
-            field_name: make_field_optional(field_info)
-            for field_name, field_info in model.model_fields.items()
-        },  # type: ignore
+        **{field_name: make_field_optional(field_info) for field_name, field_info in model.model_fields.items()},  # type: ignore
     )  # type: ignore

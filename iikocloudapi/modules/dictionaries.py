@@ -23,9 +23,9 @@ class OrderTypesResponse(BaseResponseModel):
         class Item(BaseModel):
             id: str
             name: str
-            order_service_type: Literal[
-                "Common", "DeliveryByCourier", "DeliveryPickUp"
-            ] = Field(alias="orderServiceType")
+            order_service_type: Literal["Common", "DeliveryByCourier", "DeliveryPickUp"] = Field(
+                alias="orderServiceType"
+            )
             is_deleted: bool = Field(alias="isDeleted")
             external_revision: int | None = Field(None, alias="externalRevision")
             is_default: bool | None = Field(None, alias="isDefault")
@@ -48,9 +48,7 @@ class DiscountsResponse(BaseResponseModel):
             name: str | None = None
             percent: Decimal
             is_categorised_discount: bool = Field(alias="isCategorisedDiscount")
-            product_category_discounts: list[ProductCategoryDiscount] = Field(
-                alias="productCategoryDiscounts"
-            )
+            product_category_discounts: list[ProductCategoryDiscount] = Field(alias="productCategoryDiscounts")
             comment: str | None = None
             can_be_applied_selectively: bool = Field(alias="canBeAppliedSelectively")
             min_order_sum: Decimal | None = Field(alias="minOrderSum")
@@ -76,9 +74,7 @@ class PaymentTypesResponse(BaseResponseModel):
         comment: str | None = None
         combinable: bool
         external_revision: int | None = Field(None, alias="externalRevision")
-        applicable_marketing_campaigns: list[str] = Field(
-            alias="applicableMarketingCampaigns"
-        )
+        applicable_marketing_campaigns: list[str] = Field(alias="applicableMarketingCampaigns")
         is_deleted: bool = Field(alias="isDeleted")
         print_cheque: bool = Field(alias="printCheque")
         payment_processing_type: Literal["External", "Internal", "Both"] | None = Field(
@@ -110,9 +106,9 @@ class TipsTypesResponse(BaseResponseModel):
         id: str
         name: str
         organization_ids: list[str] = Field(alias="organizationIds")
-        order_service_types: list[
-            Literal["Common", "DeliveryByCourier", "DeliveryPickUp"]
-        ] = Field(alias="orderServiceTypes")
+        order_service_types: list[Literal["Common", "DeliveryByCourier", "DeliveryPickUp"]] = Field(
+            alias="orderServiceTypes"
+        )
         payment_types_ids: list[str] = Field(alias="paymentTypesIds")
 
     tips_types: list[TipType] = Field(alias="tipsTypes")

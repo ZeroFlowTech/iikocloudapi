@@ -59,9 +59,7 @@ def test_organizations_model():
 
 
 def test_organizations_response_with_additional_info():
-    m = OrganizationsResponse(
-        **orjson.loads(available_organizations_with_additional_info_json)
-    )
+    m = OrganizationsResponse(**orjson.loads(available_organizations_with_additional_info_json))
     assert isinstance(m.organizations[0], OrganizationExtendedModel)
 
 

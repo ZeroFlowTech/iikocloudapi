@@ -57,16 +57,12 @@ class MenuByIdResponse(BaseModel):
                         description: str
                         button_image: str = Field(alias="buttonImage")
                         item_id: str = Field(alias="itemId")
-                        nutrition_per_hundred_grams: dict = Field(
-                            alias="nutritionPerHundredGrams"
-                        )
+                        nutrition_per_hundred_grams: dict = Field(alias="nutritionPerHundredGrams")
                         portion_weight_grams: float = Field(alias="portionWeightGrams")
                         tags: list[Tag]
                         prices: list[Price]
                         restrictions: Restriction
-                        allergen_groups: list[AllergenGroup] = Field(
-                            alias="allergenGroups"
-                        )
+                        allergen_groups: list[AllergenGroup] = Field(alias="allergenGroups")
 
                     sku: str
                     name: str
@@ -84,26 +80,18 @@ class MenuByIdResponse(BaseModel):
                 is_default: bool = Field(alias="isDefault")
                 portion_weight_grams: float = Field(alias="portionWeightGrams")
                 size_id: str = Field(alias="sizeId")
-                nutrition_per_hundred_grams: dict = Field(
-                    alias="nutritionPerHundredGrams"
-                )
+                nutrition_per_hundred_grams: dict = Field(alias="nutritionPerHundredGrams")
                 button_image_url: str = Field(alias="buttonImageUrl")
-                button_image_cropped_url: list[str] = Field(
-                    alias="buttonImageCroppedUrl"
-                )
+                button_image_cropped_url: list[str] = Field(alias="buttonImageCroppedUrl")
                 prices: list[Price]
-                item_modifier_groups: list[ItemModifierGroup] = Field(
-                    alias="itemModifierGroups"
-                )
+                item_modifier_groups: list[ItemModifierGroup] = Field(alias="itemModifierGroups")
 
             sku: str
             name: str
             description: str
             item_id: str = Field(alias="itemId")
-            modifier_schema_id: str = Field(alias="modifierSchemaId")
-            order_item_type: Literal["Product", "Compound"] = Field(
-                alias="orderItemType"
-            )
+            modifier_schema_id: str | None = Field(None, alias="modifierSchemaId")
+            order_item_type: Literal["Product", "Compound"] = Field(alias="orderItemType")
             allergen_groups: list[AllergenGroup] = Field(alias="allergenGroups")
             tax_category: TaxCategory = Field(alias="taxCategory")
             item_sizes: list[ItemSize] = Field(alias="itemSizes")
@@ -137,9 +125,7 @@ class StopListsResponse(BaseResponseModel):
         organization_id: str = Field(alias="organizationId")
         items: list[Item]
 
-    terminal_group_stop_lists: list[TerminalGroupStopList] = Field(
-        alias="terminalGroupStopLists"
-    )
+    terminal_group_stop_lists: list[TerminalGroupStopList] = Field(alias="terminalGroupStopLists")
 
 
 class StopListsCheckResponse(BaseResponseModel):
@@ -189,9 +175,7 @@ class ComboResponse(BaseModel):
                 size_name: str = Field(alias="sizeName")
                 size_id: str | None = Field(None, alias="sizeId")
                 forbidden_modifiers: list[str] = Field(alias="forbiddenModifiers")
-                price_modification_amount: Decimal = Field(
-                    alias="priceModificationAmount"
-                )
+                price_modification_amount: Decimal = Field(alias="priceModificationAmount")
 
             id: str
             name: str
@@ -201,9 +185,7 @@ class ComboResponse(BaseModel):
         source_action_id: str = Field(alias="sourceActionId")
         category_id: str | None = Field(None, alias="categoryId")
         name: str
-        price_modification_type: PriceModificationTypeEnum = Field(
-            alias="priceModificationType"
-        )
+        price_modification_type: PriceModificationTypeEnum = Field(alias="priceModificationType")
         price_modification: Decimal = Field(alias="priceModification")
         is_active: bool | None = Field(None, alias="isActive")
         start_date: str | None = Field(None, alias="startDate")

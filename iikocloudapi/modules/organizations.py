@@ -76,33 +76,21 @@ class OrganizationExtendedModel(OrganizationSimpleModel):
     use_uae_addressing_system: bool = Field(alias="useUaeAddressingSystem")
     version: str
     currency_iso_name: str | None = Field(None, alias="currencyIsoName")
-    currency_minimum_denomination: Decimal | None = Field(
-        None, alias="currencyMinimumDenomination"
-    )
+    currency_minimum_denomination: Decimal | None = Field(None, alias="currencyMinimumDenomination")
     country_phone_code: str | None = Field(None, alias="countryPhoneCode")
-    marketing_source_required_in_delivery: bool | None = Field(
-        None, alias="marketingSourceRequiredInDelivery"
-    )
+    marketing_source_required_in_delivery: bool | None = Field(None, alias="marketingSourceRequiredInDelivery")
     default_delivery_city_id: str | None = Field(None, alias="defaultDeliveryCityId")
     delivery_city_ids: list[str] | None = Field(None, alias="deliveryCityIds")
-    delivery_service_type: DeliveryServiceTypeEnum | None = Field(
-        None, alias="deliveryServiceType"
-    )
+    delivery_service_type: DeliveryServiceTypeEnum | None = Field(None, alias="deliveryServiceType")
     delivery_order_payment_settings: DeliveryOrderPaymentSettingsEnum | None = Field(
         None, alias="deliveryOrderPaymentSettings"
     )
-    default_call_center_payment_type_id: str | None = Field(
-        None, alias="defaultCallCenterPaymentTypeId"
-    )
-    order_item_comment_enabled: bool | None = Field(
-        None, alias="orderItemCommentEnabled"
-    )
+    default_call_center_payment_type_id: str | None = Field(None, alias="defaultCallCenterPaymentTypeId")
+    order_item_comment_enabled: bool | None = Field(None, alias="orderItemCommentEnabled")
     inn: str | None = None
     address_format_type: AddressFormatTypeEnum = Field(alias="addressFormatType")
     is_confirmation_enabled: bool | None = Field(None, alias="isConfirmationEnabled")
-    confirm_allowed_interval_in_minutes: int | None = Field(
-        None, alias="confirmAllowedIntervalInMinutes"
-    )
+    confirm_allowed_interval_in_minutes: int | None = Field(None, alias="confirmAllowedIntervalInMinutes")
     is_cloud: bool = Field(alias="isCloud")
     is_anonymous_guests_allowed: bool = Field(alias="isAnonymousGuestsAllowed")
     address_lookup: list[AddressLookupEnum] = Field(alias="addressLookup")

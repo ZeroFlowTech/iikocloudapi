@@ -33,9 +33,7 @@ class TerminalIsAliveResponse(BaseResponseModel):
 
 
 class TerminalAwakeResponse(BaseModel):
-    successfully_processed: list[str] | None = Field(
-        None, alias="successfullyProcessed"
-    )
+    successfully_processed: list[str] | None = Field(None, alias="successfullyProcessed")
     failed_processed: list[str] | None = Field(None, alias="failedProcessed")
 
 
