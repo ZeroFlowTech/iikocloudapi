@@ -104,6 +104,10 @@ class OrganizationExtendedOptionalModel(OrganizationExtendedModel):
 class OrganizationsResponse(BaseResponseModel):
     organizations: list[OrganizationSimpleModel | OrganizationExtendedModel]
 
+    @property
+    def organization_ids(self) -> list:
+        return [org.id for org in self.organizations]
+
 
 class OrganizationsSettingsResponse(BaseResponseModel):
     organizations: list[OrganizationExtendedOptionalModel]
