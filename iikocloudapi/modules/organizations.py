@@ -158,9 +158,9 @@ class Organizations:
 
     async def settings(
         self,
+        parameters: list[Parameters],
         organization_ids: list[str] | None = None,
         include_disabled: bool = False,
-        parameters: list[Parameters] | None = None,
         return_external_data: list[str] | None = None,
         timeout: str | int | None = None,
     ) -> OrganizationsSettingsResponse:
