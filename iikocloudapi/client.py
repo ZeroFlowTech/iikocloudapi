@@ -88,7 +88,7 @@ class Client:
         if auth and (not self.token_info or self.token_info.is_expired()):
             await self.auth()
 
-        headers = None
+        headers = self.headers
         if timeout:
             headers = self.headers.copy()
             headers["Timeout"] = str(timeout)
