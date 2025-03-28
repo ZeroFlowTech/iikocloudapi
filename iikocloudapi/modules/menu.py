@@ -62,7 +62,7 @@ class MenuByIdResponse(BaseModel):
                         tags: list[Tag]
                         prices: list[Price]
                         restrictions: Restriction
-                        allergen_groups: list[AllergenGroup] = Field(alias="allergenGroups")
+                        allergen_groups: list[AllergenGroup] = Field([], alias="allergenGroups")
 
                     sku: str
                     name: str
@@ -79,10 +79,10 @@ class MenuByIdResponse(BaseModel):
                 size_name: str = Field(alias="sizeName")
                 is_default: bool = Field(alias="isDefault")
                 portion_weight_grams: float = Field(alias="portionWeightGrams")
-                size_id: str = Field(alias="sizeId")
+                size_id: str | None = Field(None, alias="sizeId")
                 nutrition_per_hundred_grams: dict = Field(alias="nutritionPerHundredGrams")
-                button_image_url: str = Field(alias="buttonImageUrl")
-                button_image_cropped_url: list[str] = Field(alias="buttonImageCroppedUrl")
+                button_image_url: str | None = Field(None, alias="buttonImageUrl")
+                button_image_cropped_url: list[str] = Field([], alias="buttonImageCroppedUrl")
                 prices: list[Price]
                 item_modifier_groups: list[ItemModifierGroup] = Field(alias="itemModifierGroups")
 
@@ -92,16 +92,16 @@ class MenuByIdResponse(BaseModel):
             item_id: str = Field(alias="itemId")
             modifier_schema_id: str | None = Field(None, alias="modifierSchemaId")
             order_item_type: Literal["Product", "Compound"] = Field(alias="orderItemType")
-            allergen_groups: list[AllergenGroup] = Field(alias="allergenGroups")
-            tax_category: TaxCategory = Field(alias="taxCategory")
+            allergen_groups: list[AllergenGroup] = Field([], alias="allergenGroups")
+            tax_category: TaxCategory | None = Field(None, alias="taxCategory")
             item_sizes: list[ItemSize] = Field(alias="itemSizes")
 
         id: str
         name: str
         description: str
         items: list[Item]
-        button_image_url: str = Field(alias="buttonImageUrl")
-        header_image_url: str = Field(alias="headerImageUrl")
+        button_image_url: str | None = Field(None, alias="buttonImageUrl")
+        header_image_url: str | None = Field(None, alias="headerImageUrl")
 
     id: int
     name: str
