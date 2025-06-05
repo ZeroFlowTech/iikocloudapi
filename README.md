@@ -66,4 +66,4 @@ if __name__ == "__main__":
     - [x] [Get combos info.](https://api-ru.iiko.services/#tag/Menu/paths/~1api~11~1combo/post)
     - [x] [Calculate combo price.](https://api-ru.iiko.services/#tag/Menu/paths/~1api~11~1combo~1calculate/post)
 - [Operations](https://api-ru.iiko.services/#tag/Operations)
-    - [Get status of command.](https://api-ru.iiko.services/#tag/Operations/paths/~1api~11~1commands~1status/post)
+    - [x] [Get status of command.](https://api-ru.iiko.services/#tag/Operations/paths/~1api~11~1commands~1status/post)
