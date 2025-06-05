@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 ---
+## [0.4.1](https://github.com/ZeroFlowTech/iikocloudapi/compare/v0.4.0..v0.4.1) - 2025-06-05
+
+### Bug Fixes
+
+- returns available to api-login user organizations specified settings method - ([dfc6e1f](https://github.com/ZeroFlowTech/iikocloudapi/commit/dfc6e1f34d6b556eeb37dd8cfea557c738b2361e)) - Deni Tazurkaev
+
+### Miscellaneous Chores
+
+- fix README.md - ([bd7b80a](https://github.com/ZeroFlowTech/iikocloudapi/commit/bd7b80a73ec30c0818c7a2c07d4c883ed517bb66)) - Deni Tazurkaev
+
+### Upgrade
+
+- pydantic & orjson (and dev dependencies) - ([582bb07](https://github.com/ZeroFlowTech/iikocloudapi/commit/582bb07cd5feaa5ca1cc1f3e32c9bb1754780fec)) - Deni Tazurkaev
+
+---
 ## [0.4.0](https://github.com/ZeroFlowTech/iikocloudapi/compare/v0.3.1..v0.4.0) - 2025-03-28
 
 ### Bug Fixes
