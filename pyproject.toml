@@ -39,15 +39,15 @@ packages = [{ "include" = "iikocloudapi" }]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-pydantic = "^2.10.6"
+pydantic = "^2.11.5"
 httpx = "^0.28.1"
-orjson = "^3.10.15"
+orjson = "^3.10.18"
 
 
 [tool.poetry.group.dev.dependencies]
-pyright = "^1.1.396"
+pyright = "^1.1.401"
 ruff = "^0.11.0"
-pytest = "^8.3.5"
+pytest = "^8.4.0"
 
 [build-system]
 requires = ["poetry-core"]
