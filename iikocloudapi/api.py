@@ -4,6 +4,7 @@ from iikocloudapi.modules.dictionaries import Dictionaries
 from iikocloudapi.modules.menu import Menu
 from iikocloudapi.modules.notifications import Notifications
 from iikocloudapi.modules.operations import Operations
+from iikocloudapi.modules.orders import Orders
 from iikocloudapi.modules.organizations import Organizations
 from iikocloudapi.modules.terminal_groups import TerminalGroups
 
@@ -19,3 +20,4 @@ class iikoCloudApi:
         self.dictionaries = Dictionaries(self._client)
         self.menu = Menu(self._client)
         self.operations = Operations(self._client)
+        self.orders = Orders(self._client)

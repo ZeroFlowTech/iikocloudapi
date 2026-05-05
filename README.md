@@ -12,6 +12,7 @@ pip install iikocloudapi
 - /api/1/notifications/send - `iiko_client.notifications.send(...)`
 - /api/1/organizations - `iiko_client.organizations(...)`
 - /api/1/organizations/settings - `iiko_client.organizations.settings(...)`
+- /api/1/order/create - `iiko_client.orders.create(...)`
 
 
 ## Пример использования
@@ -65,5 +66,7 @@ if __name__ == "__main__":
     - [x] [Clear out-of-stock list.](https://api-ru.iiko.services/#tag/Menu/paths/~1api~11~1stop_lists~1clear/post)
     - [x] [Get combos info.](https://api-ru.iiko.services/#tag/Menu/paths/~1api~11~1combo/post)
     - [x] [Calculate combo price.](https://api-ru.iiko.services/#tag/Menu/paths/~1api~11~1combo~1calculate/post)
+- [Orders](https://api-ru.iiko.services/#tag/Orders)
+    - [x] [Create table order.](https://api-ru.iiko.services/#tag/Orders/paths/~1api~11~1order~1create/post)
 - [Operations](https://api-ru.iiko.services/#tag/Operations)
     - [x] [Get status of command.](https://api-ru.iiko.services/#tag/Operations/paths/~1api~11~1commands~1status/post)
